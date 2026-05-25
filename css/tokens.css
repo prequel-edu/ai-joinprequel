@@ -1,0 +1,153 @@
+/* Prequel Design Tokens — shared across both variant LPs
+ * Source: brands/prequel/projects/summer-cohort-2026-variants/alignment.md
+ *
+ * Variant 1 (College Prep) palette: dark/restrained
+ * Variant 2 (AI Builders) palette: bright/electric (kiwi + fuchsia accents)
+ */
+
+:root {
+  /* Mint scale */
+  --mint-100: #21dfbd;
+  --mint-200: #008b72;
+  --mint-300: #034545;
+  --mint-400: #013232;
+  --mint-500: #012626;
+
+  /* Accent colors */
+  --fuchsia-100: #f956f2;
+  --kiwi-100: #c1f553;
+  --kiwi-alt: #9fc30e;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --white-80: rgba(255, 255, 255, 0.8);
+  --white-70: rgba(255, 255, 255, 0.7);
+  --white-60: rgba(255, 255, 255, 0.6);
+  --white-15: rgba(255, 255, 255, 0.15);
+  --black: #000000;
+
+  /* Backgrounds — used per-variant overrides in main stylesheets */
+  --bg-primary: var(--mint-500);
+  --bg-secondary: var(--mint-400);
+
+  /* Typography */
+  --font-primary: 'PP Mori', system-ui, -apple-system, sans-serif;
+  --font-secondary: 'PP Right Grotesk', system-ui, sans-serif;
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Type scale */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 2rem;
+  --text-4xl: 2.5rem;
+  --text-5xl: 3rem;
+  --text-6xl: 4rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-pill: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.25);
+
+  /* Breakpoints (reference; use in media queries) */
+  /* --bp-sm: 480px; --bp-md: 640px; --bp-lg: 991px; --bp-xl: 1280px; */
+}
+
+/* Font face declarations — fonts must be in /fonts/ folder */
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PPMori-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url('/fonts/PPMori-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Right Grotesk';
+  src: url('/fonts/PPRightGrotesk-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Right Grotesk';
+  src: url('/fonts/PPRightGrotesk-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Base reset + body defaults */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-primary);
+  font-size: var(--text-base);
+  line-height: 1.5;
+  color: var(--white);
+  background-color: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-secondary);
+  margin: 0;
+  line-height: 1.1;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}

@@ -1,0 +1,15 @@
+{
+  "name": "ai-joinprequel",
+  "version": "1.0.0",
+  "description": "Prequel Summer Cohort 2026 - AI Builders parent-focused landing page",
+  "private": true,
+  "scripts": {
+    "dev": "npx http-server -p 8081 -c-1 .",
+    "voice-check": "node ../../scripts/voice-check.mjs --target=lp2",
+    "link-check": "node ../../scripts/link-check.mjs --target=lp2",
+    "lighthouse": "npx lighthouse http://localhost:8081 --output=json --output-path=./lighthouse-report.json --chrome-flags='--headless'"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
