@@ -2164,3 +2164,258 @@ body {
   display: none !important;
 }
 
+/* ============================================
+   28. Iteration 3 — brand-aligned caps + color
+   ============================================ */
+
+/* Bigger nav logo (~44px) */
+.nav__logo img {
+  height: 44px;
+}
+
+@media (max-width: 640px) {
+  .nav__logo img {
+    height: 40px;
+  }
+}
+
+/* ALL CAPS chunky headlines for big section titles */
+.section__title--caps,
+.signup-split__title--caps,
+.college-soft__headline--caps,
+.final-cta__title--caps {
+  text-transform: uppercase;
+  font-weight: var(--weight-black);
+  letter-spacing: -0.01em;
+}
+
+/* Color-accent word spans within ALL CAPS headlines */
+.accent-mint { color: var(--mint-100); }
+.accent-fuchsia { color: var(--fuchsia-100); }
+.accent-kiwi { color: var(--kiwi-100); }
+.accent-orange { color: var(--orange-100); }
+
+/* Light section overrides: keep mint/orange/fuchsia accents readable on light bg */
+.section--light .accent-mint { color: var(--mint-200); }
+.section--light .accent-kiwi { color: var(--kiwi-alt); }
+.section--light .accent-fuchsia { color: var(--fuchsia-100); }
+
+/* ============================================
+   29. HubSpot form contrast fix
+   ============================================ */
+
+/* Light card form (top signup) — already on white background */
+.hubspot-form-host .hs-form,
+.hubspot-form-host form {
+  color: var(--mint-500);
+}
+
+.hubspot-form-host label,
+.hubspot-form-host .hs-form-field label,
+.hubspot-form-host legend,
+.hubspot-form-host .hs-richtext,
+.hubspot-form-host .hs-richtext p {
+  color: var(--mint-500) !important;
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+}
+
+.hubspot-form-host input[type='text'],
+.hubspot-form-host input[type='email'],
+.hubspot-form-host input[type='tel'],
+.hubspot-form-host input[type='number'],
+.hubspot-form-host select,
+.hubspot-form-host textarea {
+  background-color: var(--white) !important;
+  color: var(--mint-500) !important;
+  border: 1px solid rgba(1, 38, 38, 0.25) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: var(--space-3) var(--space-4) !important;
+  font-family: var(--font-primary) !important;
+  font-size: var(--text-base) !important;
+  width: 100% !important;
+}
+
+.hubspot-form-host input:focus,
+.hubspot-form-host select:focus,
+.hubspot-form-host textarea:focus {
+  outline: 2px solid var(--mint-200) !important;
+  border-color: var(--mint-200) !important;
+}
+
+.hubspot-form-host .hs-error-msg,
+.hubspot-form-host .hs-error-msgs {
+  color: #c1272d !important;
+  font-size: var(--text-sm) !important;
+}
+
+.hubspot-form-host .hs-button,
+.hubspot-form-host input[type='submit'] {
+  background-color: var(--kiwi-100) !important;
+  color: var(--mint-500) !important;
+  border: none !important;
+  border-radius: var(--radius-pill) !important;
+  padding: var(--space-4) var(--space-8) !important;
+  font-family: var(--font-primary) !important;
+  font-weight: var(--weight-medium) !important;
+  font-size: var(--text-base) !important;
+  cursor: pointer !important;
+  transition: transform 0.2s ease, background-color 0.2s ease !important;
+}
+
+.hubspot-form-host .hs-button:hover,
+.hubspot-form-host input[type='submit']:hover {
+  background-color: var(--mint-100) !important;
+  transform: translateY(-1px);
+}
+
+/* Dark form variant (final CTA — on dark mint background) */
+.hubspot-form-host--dark label,
+.hubspot-form-host--dark .hs-form-field label,
+.hubspot-form-host--dark legend,
+.hubspot-form-host--dark .hs-richtext,
+.hubspot-form-host--dark .hs-richtext p {
+  color: var(--white) !important;
+}
+
+.hubspot-form-host--dark input[type='text'],
+.hubspot-form-host--dark input[type='email'],
+.hubspot-form-host--dark input[type='tel'],
+.hubspot-form-host--dark input[type='number'],
+.hubspot-form-host--dark select,
+.hubspot-form-host--dark textarea {
+  background-color: var(--white) !important;
+  color: var(--mint-500) !important;
+}
+
+.hubspot-form-host--dark .hs-error-msg,
+.hubspot-form-host--dark .hs-error-msgs {
+  color: #ffb4b8 !important;
+}
+
+/* ============================================
+   30. Coach restructure — main + advisors
+   ============================================ */
+
+.coaches--main {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-8);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-16);
+}
+
+.coach--main {
+  background-color: var(--white);
+  border-radius: var(--radius-md);
+  padding: var(--space-8);
+  text-align: center;
+  border-top: 6px solid var(--fuchsia-100);
+  box-shadow: 0 4px 12px rgba(1, 38, 38, 0.06);
+}
+
+.coach--main:nth-child(2) {
+  border-top-color: var(--mint-100);
+}
+
+.coach--main:nth-child(3) {
+  border-top-color: var(--kiwi-alt);
+}
+
+.coach--main .coach__photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-4);
+  object-fit: cover;
+  border: 3px solid var(--mint-500);
+  background-color: var(--mint-300);
+}
+
+.coach--main .coach__name {
+  color: var(--mint-500);
+  font-size: var(--text-2xl);
+}
+
+.coach--main .coach__role {
+  color: var(--mint-200);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-3);
+}
+
+.coach--main .coach__bio {
+  color: var(--mint-400);
+  font-size: var(--text-base);
+}
+
+/* Advisor row — smaller cards */
+.advisors__eyebrow {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.advisors {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.advisor {
+  text-align: center;
+}
+
+.advisor__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto var(--space-2);
+  object-fit: cover;
+  background-color: var(--mint-300);
+  border: 2px solid var(--mint-200);
+}
+
+.advisor__name {
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-black);
+  font-size: var(--text-sm);
+  color: var(--mint-500);
+  margin: 0 0 var(--space-1);
+  line-height: 1.2;
+}
+
+.advisor__role {
+  font-size: var(--text-xs);
+  color: var(--mint-200);
+  margin: 0;
+  line-height: 1.3;
+}
+
+@media (max-width: 1024px) {
+  .advisors {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .coaches--main {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .advisors {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ============================================
+   31. Section eyebrows — match brand pattern
+   ============================================ */
+
+.section__eyebrow {
+  font-family: var(--font-primary);
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.14em;
+}
+
