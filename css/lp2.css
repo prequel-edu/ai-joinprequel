@@ -568,7 +568,7 @@ body {
 }
 
 .skill:nth-child(2) {
-  border-top-color: var(--kiwi-alt);
+  border-top-color: #7ba80b; /* matches pillar 2 label color */
 }
 
 .skill:nth-child(3) {
@@ -587,8 +587,12 @@ body {
 }
 
 /* Pillar label color matches top accent — iteration 4 */
+.skill:nth-child(1) .skill__marker {
+  color: var(--mint-200);
+}
+
 .skill:nth-child(2) .skill__marker {
-  color: var(--kiwi-alt);
+  color: #7ba80b; /* darker lime that reads on white, matches kiwi-alt tone */
 }
 
 .skill:nth-child(3) .skill__marker {
