@@ -4,6 +4,58 @@
  */
 
 /* ============================================
+   0. Accessibility — prefers-reduced-motion
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================
+   0. Accessibility — focus-visible
+   ============================================ */
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--kiwi-100);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.section-light a:focus-visible,
+.section--light a:focus-visible,
+.section-light button:focus-visible,
+.section--light button:focus-visible,
+.section-light input:focus-visible,
+.section--light input:focus-visible,
+.section-light select:focus-visible,
+.section--light select:focus-visible,
+.section-light textarea:focus-visible,
+.section--light textarea:focus-visible {
+  outline-color: var(--mint-500);
+}
+
+/* ============================================
+   0. Visually-hidden utility (screen-reader-only text)
+   ============================================ */
+.visually-hidden {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
+}
+
+/* ============================================
    1. Page chrome
    ============================================ */
 
@@ -47,7 +99,8 @@ body {
 }
 
 .section--light .section__eyebrow {
-  color: var(--mint-200);
+  /* Iteration 5: audit — #008B72 = 4.25:1 (fails AA body 4.5:1). Bump to #006B57 = 5.6:1. */
+  color: #006B57;
 }
 
 .section__title {
@@ -238,6 +291,13 @@ body {
   letter-spacing: -0.01em;
   margin-bottom: var(--space-6);
   text-transform: uppercase;
+}
+
+/* Iteration 5: cap mobile H1 so H1 + lead + CTA fit above fold at 375x812. */
+@media (max-width: 480px) {
+  .hero__h1 {
+    font-size: clamp(2rem, 8vw, 2.5rem);
+  }
 }
 
 .hero__h1-line1 {
@@ -2209,10 +2269,13 @@ body {
 .accent-kiwi { color: var(--kiwi-100); }
 .accent-orange { color: var(--orange-100); }
 
-/* Light section overrides: keep mint/orange/fuchsia accents readable on light bg */
-.section--light .accent-mint { color: var(--mint-200); }
-.section--light .accent-kiwi { color: var(--kiwi-alt); }
-.section--light .accent-fuchsia { color: var(--fuchsia-100); }
+/* Light section overrides: iteration 5 — audit-driven contrast fixes
+   - mint: #008B72 fails 4.25:1 → #006B57 = 5.6:1
+   - kiwi: #C1F553 fails 1.28:1 → mint-500 (dark teal)
+   - fuchsia: #F956F2 fails 2.75:1 → #C42AB8 = 4.5:1 */
+.section--light .accent-mint, .section-light .accent-mint { color: #006B57; }
+.section--light .accent-kiwi, .section-light .accent-kiwi { color: var(--mint-500); }
+.section--light .accent-fuchsia, .section-light .accent-fuchsia { color: #C42AB8; }
 
 /* ============================================
    29. HubSpot form contrast fix
@@ -2528,6 +2591,41 @@ body {
 @media (max-width: 640px) {
   .nav__inner {
     padding: var(--space-3) var(--space-5);
+  }
+}
+
+/* ============================================
+   33. Iteration 5 — Perplexity audit fixes
+   ============================================ */
+
+/* Max-width 65ch on body paragraphs in Three Skills + Two Phases sections */
+.skills .skill__body,
+.phases .phase__list li,
+.phases .phase__milestone,
+.phases .phase__dates {
+  max-width: 65ch;
+}
+
+/* Touch targets >= 44x44 on mobile (audit: nav logo, footer links, nav CTA) */
+@media (max-width: 640px) {
+  .nav-logo, .nav__logo {
+    padding: 8px;
+    margin: -8px;
+    min-width: 44px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  footer a, .footer a {
+    padding: 12px 6px;
+    margin: -12px -6px;
+    display: inline-block;
+  }
+  .nav-cta, .nav__cta {
+    padding: 10px 18px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
   }
 }
 
