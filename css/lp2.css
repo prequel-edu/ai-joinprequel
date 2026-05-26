@@ -234,9 +234,10 @@ body {
 .hero__h1 {
   font-family: var(--font-secondary);
   font-size: clamp(2.5rem, 5.5vw, 4.25rem);
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   margin-bottom: var(--space-6);
+  text-transform: uppercase;
 }
 
 .hero__h1-line1 {
