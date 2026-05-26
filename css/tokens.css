@@ -19,21 +19,27 @@
   --kiwi-alt: #9fc30e;
   --orange-100: #ff6b3d;
 
-  /* Neutrals */
+  /* Neutrals — aligned with changemakers.joinprequel.com */
   --white: #ffffff;
+  --off-white: #f8f8f8;       /* slightly warm off-white for body bg on light pages */
+  --light-grey: #f1f1f1;      /* "section--cream" background */
+  --mid-grey: #d4d4d4;        /* borders */
   --white-80: rgba(255, 255, 255, 0.8);
   --white-70: rgba(255, 255, 255, 0.7);
   --white-60: rgba(255, 255, 255, 0.6);
   --white-15: rgba(255, 255, 255, 0.15);
-  --black: #000000;
+  --black: #1a1a1a;           /* softer than true black, matches changemakers --black */
+  --true-black: #000000;
+  --near-black: #0a0a0a;
 
   /* Backgrounds — used per-variant overrides in main stylesheets */
-  --bg-primary: var(--mint-500);
+  --bg-primary: var(--near-black);
   --bg-secondary: var(--mint-400);
+  --bg-light: var(--light-grey);   /* section--light should use this, not pure white */
 
-  /* Typography */
-  --font-primary: 'PP Mori', system-ui, -apple-system, sans-serif;
-  --font-secondary: 'PP Right Grotesk', system-ui, sans-serif;
+  /* Typography — fallbacks match changemakers stack */
+  --font-primary: 'PP Mori', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-secondary: 'PP Right Grotesk', 'Arial Black', system-ui, sans-serif;
 
   /* Font weights */
   --weight-regular: 400;
@@ -81,38 +87,7 @@
   /* --bp-sm: 480px; --bp-md: 640px; --bp-lg: 991px; --bp-xl: 1280px; */
 }
 
-/* Font face declarations — fonts must be in /fonts/ folder */
-@font-face {
-  font-family: 'PP Mori';
-  src: url('/fonts/PPMori-Regular.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Mori';
-  src: url('/fonts/PPMori-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Right Grotesk';
-  src: url('/fonts/PPRightGrotesk-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'PP Right Grotesk';
-  src: url('/fonts/PPRightGrotesk-Black.woff2') format('woff2');
-  font-weight: 900;
-  font-style: normal;
-  font-display: swap;
-}
+/* Font face declarations are now in css/fonts.css (base64 inlined per changemakers pattern) */
 
 /* Base reset + body defaults */
 *,

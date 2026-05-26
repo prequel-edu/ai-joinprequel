@@ -26,7 +26,7 @@ body {
 }
 
 .section--light {
-  background-color: #ffffff;
+  background-color: var(--light-grey);
   color: var(--mint-500);
 }
 
