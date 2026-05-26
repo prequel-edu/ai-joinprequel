@@ -26,7 +26,7 @@ body {
 }
 
 .section--light {
-  background-color: #fafff5;
+  background-color: #ffffff;
   color: var(--mint-500);
 }
 
@@ -99,7 +99,7 @@ body {
 }
 
 .nav__logo img {
-  height: 28px;
+  height: 40px;
   width: auto;
   display: block;
 }
@@ -586,6 +586,15 @@ body {
   margin-bottom: var(--space-3);
 }
 
+/* Pillar label color matches top accent — iteration 4 */
+.skill:nth-child(2) .skill__marker {
+  color: var(--kiwi-alt);
+}
+
+.skill:nth-child(3) .skill__marker {
+  color: var(--mint-500);
+}
+
 .skill__title {
   font-family: var(--font-secondary);
   font-weight: var(--weight-black);
@@ -849,7 +858,7 @@ body {
 }
 
 .section--light .journey__step::before {
-  box-shadow: 0 0 0 4px #fafff5;
+  box-shadow: 0 0 0 4px #ffffff;
   background-color: var(--mint-200);
 }
 
@@ -2169,14 +2178,14 @@ body {
    28. Iteration 3 — brand-aligned caps + color
    ============================================ */
 
-/* Bigger nav logo (~44px) */
+/* Nav logo — iteration 4: ~40px desktop / 32px mobile per Roberta */
 .nav__logo img {
-  height: 44px;
+  height: 40px;
 }
 
 @media (max-width: 640px) {
   .nav__logo img {
-    height: 40px;
+    height: 32px;
   }
 }
 
@@ -2418,5 +2427,103 @@ body {
   font-family: var(--font-primary);
   font-weight: var(--weight-medium);
   letter-spacing: 0.14em;
+}
+
+/* ============================================
+   32. Iteration 4 — Roberta feedback
+   ============================================ */
+
+/* Dynamic product tags (replaces blanket "Shipped" badges) */
+.product-tag {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-family: var(--font-secondary);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-black);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  z-index: 3;
+  color: var(--mint-500);
+  background-color: var(--kiwi-100);
+}
+
+.product-tag--users {
+  background-color: var(--mint-100);
+  color: var(--mint-500);
+}
+
+.product-tag--revenue {
+  background-color: var(--kiwi-100);
+  color: var(--mint-500);
+}
+
+.product-tag--winner {
+  background-color: var(--fuchsia-100);
+  color: var(--mint-500);
+}
+
+.product-tag--more {
+  background-color: var(--kiwi-100);
+  color: var(--mint-500);
+}
+
+/* Hide the entire product-card__photo if its main image 404s so we don't see a
+   teal placeholder rectangle behind a floating circular headshot. */
+.product-card__photo:has(img.product-card__product[style*="display: none"]) {
+  display: none;
+}
+
+/* Tighten final CTA form container width so it doesn't look like a giant empty pill */
+.form-container {
+  max-width: 640px;
+  min-height: 480px; /* reserve space so empty box doesn't look like a single round shape pre-hydration */
+}
+
+@media (max-width: 640px) {
+  .form-container {
+    padding: var(--space-6);
+  }
+}
+
+/* Loom-callout fully neutralized (already hidden, but remove circle backstop in case
+   any pre-iter4 cached HTML still references it). */
+.loom-callout,
+.loom-callout__icon {
+  display: none !important;
+}
+
+/* Tighten mobile padding on product cards and pricing */
+@media (max-width: 640px) {
+  .product-card {
+    padding: var(--space-5);
+  }
+  .pricing-card {
+    padding: var(--space-6);
+  }
+  .phase {
+    padding: var(--space-6);
+  }
+  .qualify-col {
+    padding: var(--space-6);
+  }
+  .signup-split__pricing {
+    padding: var(--space-6);
+  }
+  .section {
+    padding: var(--space-16) 0;
+  }
+  .container {
+    padding: 0 var(--space-5);
+  }
+}
+
+/* Nav padding cleanup on mobile (don't crowd against logo) */
+@media (max-width: 640px) {
+  .nav__inner {
+    padding: var(--space-3) var(--space-5);
+  }
 }
 

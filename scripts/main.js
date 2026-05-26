@@ -68,7 +68,7 @@
     var position = 0;
     var cyclesCompleted = 0;
     var MAX_CYCLES = 3;
-    var ADVANCE_MS = 2200;
+    var ADVANCE_MS = 4000;
     var paused = false;
 
     ticker.addEventListener('mouseenter', function () {
@@ -206,7 +206,7 @@
     applyHeroVariant();
     initTicker();
     initStickyCTA();
-    initExitIntent();
+    // Exit-intent modal removed in iteration 4 per Roberta — no "shipped" popup.
   }
 
   if (document.readyState === 'loading') {

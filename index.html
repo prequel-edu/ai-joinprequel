@@ -100,7 +100,6 @@
               <a href="#signup" class="btn btn--primary">
                 Sign Up for a Consultation <span class="btn__arrow">&rarr;</span>
               </a>
-              <a href="#products" class="btn btn--ghost">See What Teens Shipped</a>
             </div>
             <p class="hero__quote">
               <em>"The money isn't in writing code. It's in solving real problems."</em>
@@ -111,19 +110,19 @@
           <div class="ticker" aria-label="Featured student products" data-ticker>
             <div class="ticker__track" data-ticker-track>
               <article class="ticker__card">
-                <span class="ticker__badge">Real Traction</span>
+                <span class="ticker__badge">Real Users</span>
                 <h3 class="ticker__title">AskL</h3>
                 <p class="ticker__metric">200K followers</p>
                 <p class="ticker__caption">Elle, age 15. Built an AI advice creator brand.</p>
               </article>
               <article class="ticker__card">
-                <span class="ticker__badge">Real Traction</span>
+                <span class="ticker__badge">Real Users</span>
                 <h3 class="ticker__title">HeartTalk</h3>
                 <p class="ticker__metric">3,000 users</p>
                 <p class="ticker__caption">Anaiah Singh, age 17. Mental health support app, live on the App Store.</p>
               </article>
               <article class="ticker__card">
-                <span class="ticker__badge">Real Traction</span>
+                <span class="ticker__badge">Winner</span>
                 <h3 class="ticker__title">Finlo.AI</h3>
                 <p class="ticker__metric">Web Summit '26</p>
                 <p class="ticker__caption">Isaiah Sidi and Evelyn Jimenez. AI tool for personal finance, presenting on stage.</p>
@@ -251,7 +250,7 @@
                 class="product-card__headshot"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--users">Real Users</span>
             </div>
             <h3 class="product-card__name">HeartTalk</h3>
             <p class="product-card__metric">3,000 users · Live on App Store</p>
@@ -275,7 +274,7 @@
                 <img src="/images/students/isaiah-sidi-raw.jpg" alt="Isaiah Sidi" onerror="this.style.display='none'" />
                 <img src="/images/students/evelyn-jimenez-raw.jpg" alt="Evelyn Jimenez" onerror="this.style.display='none'" />
               </div>
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--winner">Winner</span>
             </div>
             <h3 class="product-card__name">Finlo.AI</h3>
             <p class="product-card__metric">Web Summit '26 selection</p>
@@ -301,7 +300,6 @@
                 class="product-card__headshot"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
             </div>
             <h3 class="product-card__name">Staura</h3>
             <p class="product-card__metric">Book club app for teens</p>
@@ -321,7 +319,7 @@
                 class="product-card__product"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--users">Real Users</span>
             </div>
             <h3 class="product-card__name">AskL</h3>
             <p class="product-card__metric">200K followers · 10K messages/month</p>
@@ -341,7 +339,7 @@
                 class="product-card__product"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--winner">Winner</span>
             </div>
             <h3 class="product-card__name">AI Public Speaking Coach</h3>
             <p class="product-card__metric">MVP shipped, accepted to UChicago full-ride</p>
@@ -361,7 +359,7 @@
                 class="product-card__product"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--revenue">Real Revenue</span>
             </div>
             <h3 class="product-card__name">HUM Marketing</h3>
             <p class="product-card__metric">50M+ views · $10K to $100K artist contracts</p>
@@ -387,7 +385,7 @@
                 class="product-card__headshot"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">Shipped</span>
+              <span class="product-tag product-tag--winner">Winner</span>
             </div>
             <h3 class="product-card__name">Documentary</h3>
             <p class="product-card__metric">5M+ views · U.S. Senate testimony</p>
@@ -407,7 +405,7 @@
                 class="product-card__product"
                 onerror="this.style.display='none'"
               />
-              <span class="shipped-badge">14 More</span>
+              <span class="product-tag product-tag--more">14 More</span>
             </div>
             <h3 class="product-card__name">See Full Project Case Studies</h3>
             <p class="product-card__metric">14 more products shipped last cohort</p>
@@ -1120,21 +1118,35 @@
 
         <script>
           // HubSpot form embed — fires on both top and bottom form targets.
-          window.addEventListener('DOMContentLoaded', function () {
-            if (typeof hbspt === 'undefined') return;
-            ['#hubspot-form-top', '#hubspot-form-target'].forEach(function (sel) {
-              if (!document.querySelector(sel)) return;
-              hbspt.forms.create({
-                region: 'na1',
-                portalId: '24318280',
-                formId: '8d19bd17-a22f-4ead-9e72-43ebdd392b00',
-                target: sel,
-                onFormSubmitted: function () {
-                  window.location.href = '/confirmation/';
-                },
+          // Iteration 4: poll until hbspt is ready (script loads async on Cloudflare).
+          (function () {
+            var attempts = 0;
+            function boot() {
+              if (typeof hbspt === 'undefined') {
+                if (++attempts > 80) return; // ~8s ceiling
+                setTimeout(boot, 100);
+                return;
+              }
+              ['#hubspot-form-top', '#hubspot-form-target'].forEach(function (sel) {
+                if (!document.querySelector(sel)) return;
+                if (document.querySelector(sel + ' form')) return; // already created
+                hbspt.forms.create({
+                  region: 'na1',
+                  portalId: '24318280',
+                  formId: '8d19bd17-a22f-4ead-9e72-43ebdd392b00',
+                  target: sel,
+                  onFormSubmitted: function () {
+                    window.location.href = '/confirmation/';
+                  },
+                });
               });
-            });
-          });
+            }
+            if (document.readyState === 'loading') {
+              document.addEventListener('DOMContentLoaded', boot);
+            } else {
+              boot();
+            }
+          })();
         </script>
       </div>
     </section>
@@ -1159,22 +1171,6 @@
     <a href="#signup" class="sticky-cta" data-sticky-cta>
       <span>Sign Up for a Consultation &rarr;</span>
     </a>
-
-    <!-- ============================================
-         EXIT-INTENT MODAL
-         ============================================ -->
-    <div class="modal" data-exit-modal role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-      <div class="modal__box">
-        <button class="modal__close" data-modal-close aria-label="Close">&times;</button>
-        <h3 id="modal-title" class="modal__title">See What Teens Shipped Last Cohort.</h3>
-        <p class="modal__body">
-          Real apps. Real users. Real revenue. Eight featured products and the journeys behind each one.
-        </p>
-        <a href="#products" class="btn btn--primary" data-modal-close>
-          See What They Shipped <span class="btn__arrow">&rarr;</span>
-        </a>
-      </div>
-    </div>
 
     <script src="/scripts/main.js"></script>
   </body>
