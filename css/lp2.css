@@ -242,12 +242,13 @@ body {
   color: var(--white);
 }
 
+.nav__links a.nav__cta,
 .nav__cta {
   background-color: var(--kiwi-100);
-  color: var(--mint-500);
+  color: var(--mint-500) !important;
   padding: var(--space-2) var(--space-4);
   border-radius: var(--radius-pill);
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
   font-size: var(--text-sm);
 }
 
