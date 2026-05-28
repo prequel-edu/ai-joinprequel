@@ -469,6 +469,12 @@ body {
   line-height: 1.2;
 }
 
+/* Iteration 6: contrast fix — kiwi on light bg fails WCAG, use dark teal */
+.section--light .shift__punchline,
+.section-light .shift__punchline {
+  color: var(--mint-500);
+}
+
 /* ============================================
    7. Product showcase
    ============================================ */
@@ -1253,7 +1259,7 @@ body {
 
 .speakers {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: var(--space-6);
   margin-top: var(--space-6);
 }
@@ -2105,6 +2111,9 @@ body {
   border: 1px solid var(--white-15);
   border-radius: var(--radius-md);
   padding: var(--space-10);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
 }
 
 .phase--summer {
@@ -2122,7 +2131,7 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: var(--kiwi-100);
-  margin: 0 0 var(--space-3);
+  margin: 0;
 }
 
 .phase--scale .phase__tag {
@@ -2134,7 +2143,7 @@ body {
   font-weight: var(--weight-black);
   font-size: var(--text-3xl);
   color: var(--white);
-  margin: 0 0 var(--space-2);
+  margin: 0;
 }
 
 .phase__dates {
@@ -2142,7 +2151,7 @@ body {
   font-weight: var(--weight-medium);
   color: var(--white-70);
   font-size: var(--text-lg);
-  margin: 0 0 var(--space-3);
+  margin: 0;
 }
 
 .phase__milestone {
@@ -2150,7 +2159,7 @@ body {
   font-weight: var(--weight-black);
   font-size: var(--text-base);
   color: var(--kiwi-100);
-  margin: 0 0 var(--space-6);
+  margin: var(--space-2) 0 var(--space-2);
 }
 
 .phase--scale .phase__milestone {
@@ -2538,6 +2547,83 @@ body {
   color: var(--mint-500);
 }
 
+/* Iteration 6: new badge variants for expanded showcase */
+.product-tag--impact {
+  background-color: var(--mint-100);
+  color: var(--mint-500);
+}
+
+.product-tag--traction {
+  background-color: var(--kiwi-100);
+  color: var(--mint-500);
+}
+
+.product-tag--built {
+  background-color: var(--fuchsia-100);
+  color: var(--mint-500);
+}
+
+/* Iteration 6: speaker bio + LinkedIn link */
+.speaker__bio {
+  color: var(--white-80);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.speaker__link {
+  display: inline-block;
+  color: var(--kiwi-100);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.speaker__link:hover {
+  color: var(--white);
+}
+
+/* Iteration 6: college outcomes list — schools where Prequel alumni went */
+.college-soft__schools {
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid rgba(1, 38, 38, 0.15);
+}
+
+.college-soft__schools-label {
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-black);
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--mint-500);
+  margin: 0 0 var(--space-3);
+}
+
+.college-soft__schools-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-secondary);
+  font-weight: var(--weight-black);
+  font-size: var(--text-lg);
+  color: var(--mint-500);
+}
+
+.college-soft__schools-list li {
+  display: inline-block;
+}
+
+.college-soft__schools-list li:not(:last-child)::after {
+  content: '·';
+  margin-left: var(--space-4);
+  color: var(--mint-200);
+}
+
 /* Hide the entire product-card__photo if its main image 404s so we don't see a
    teal placeholder rectangle behind a floating circular headshot. */
 .product-card__photo:has(img.product-card__product[style*="display: none"]) {
@@ -2572,7 +2658,7 @@ body {
     padding: var(--space-6);
   }
   .phase {
-    padding: var(--space-6);
+    padding: var(--space-8);
   }
   .qualify-col {
     padding: var(--space-6);
